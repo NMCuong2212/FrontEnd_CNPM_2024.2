@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@angular/router": "^19.2.5",
+    "ngx-ui-loader": "^13.0.0"
+  }
+}
