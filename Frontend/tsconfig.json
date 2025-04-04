@@ -19,7 +19,13 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "skipLibCheck": true,  // Thêm dòng này
+    "types": ["rxjs"],     // Thêm dòng này
+    "paths": {             // Thêm block này
+      "rxjs": ["node_modules/rxjs/dist/cjs/index.js"],
+      "rxjs/*": ["node_modules/rxjs/dist/cjs/*"]
+  }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
