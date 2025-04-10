@@ -248,3 +248,20 @@ a {
     transform: translateY(-2px);
   }
 }
+
+#btn-Forgot {
+  background-color: #CC99CC;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #45a049;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+  }
+}
