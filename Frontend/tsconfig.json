@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -25,7 +24,9 @@
     "paths": {             // Thêm block này
       "rxjs": ["node_modules/rxjs/dist/cjs/index.js"],
       "rxjs/*": ["node_modules/rxjs/dist/cjs/*"]
-  }
+    },
+    "esModuleInterop": true,                    //  thêm để jwt hoạt động
+    "allowSyntheticDefaultImports": true        //  thêm để jwt hoạt động
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
