@@ -1,0 +1,37 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "es2020",
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "skipLibCheck": true,  // Thêm dòng này
+    "types": ["rxjs"],     // Thêm dòng này
+    "paths": {             // Thêm block này
+      "rxjs": ["node_modules/rxjs/dist/cjs/index.js"],
+      "rxjs/*": ["node_modules/rxjs/dist/cjs/*"]
+    },
+    "esModuleInterop": true,                    //  thêm để jwt hoạt động
+    "allowSyntheticDefaultImports": true        //  thêm để jwt hoạt động
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
