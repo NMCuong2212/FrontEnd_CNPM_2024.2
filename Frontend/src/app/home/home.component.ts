@@ -19,12 +19,18 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userServices.checkToken().subscribe((response:any)=>{
-      this.router.navigate(['/cafe/dashboard']);
-    },(error:any)=>{
-      console.log(error);
-    })
+    console.log("HomeComponent ngOnInit chạy"); // ✅ debug
+    this.userServices.checkToken().subscribe(
+      (response: any) => {
+        console.log("Token hợp lệ:", response); // ✅ debug
+        this.router.navigate(['/cafe/dashboard']);
+      },
+      (error: any) => {
+        console.log("Token không hợp lệ:", error);
+      }
+    );
   }
+  
 
   handleSignupAction(){
     const dialogConfig = new MatDialogConfig();

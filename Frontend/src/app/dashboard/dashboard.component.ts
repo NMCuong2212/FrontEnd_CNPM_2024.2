@@ -1,4 +1,9 @@
 import { Component, AfterViewInit } from '@angular/core';
+import { DashboardService } from '../services/dashboard.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SnackbarService } from '../services/snackbar.service';
+import { error } from 'console';
+import { GlobalConstants } from '../shared/global-constants';
 @Component({
 	selector: 'app-dashboard',
 	templateUrl: './dashboard.component.html',
@@ -6,9 +11,34 @@ import { Component, AfterViewInit } from '@angular/core';
 })
 export class DashboardComponent implements AfterViewInit {
 
+	responseMessage: any;
+	data: any;
+
+
+
 	ngAfterViewInit() { }
 
-	constructor() {
+	constructor(private dashboardService:DashboardService,
+		private ngxSerivice:NgxUiLoaderService,
+		private snackbarService:SnackbarService) {
+			this.ngxSerivice.start();
+			this.dashboardData();
+	}
+
+	dashboardData(){
+		this.dashboardService.getDetails().subscribe((response:any)=>{
+			this.ngxSerivice.stop();
+			this.data = response;
+		},(error:any)=>{
+			this.ngxSerivice.stop();
+			console.log(error);
+			if(error.error?.message){
+				this.responseMessage = error.error?.message;
+			}else{
+				this.responseMessage = GlobalConstants.genericError;
+			}
+			this.snackbarService.openSnackBar(this.responseMessage,GlobalConstants.error)
+		})
 	}
 
 }
