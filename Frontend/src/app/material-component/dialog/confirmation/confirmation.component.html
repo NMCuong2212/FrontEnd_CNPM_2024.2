@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="mat-elevation-z2">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <span class="dialog-title">Xác nhận</span>
+      <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>    
+  </mat-toolbar>
+  
+  <mat-dialog-content class="mat-typography dialog-content">
+    <p>Bạn có chắc chắn muốn <strong>{{ details.message }}</strong> tài khoản </p>
+  </mat-dialog-content>
+  
+  <mat-dialog-actions align="end" class="dialog-actions">
+    <button mat-flat-button color="primary" (click)="handleChangeAction()">
+      <mat-icon>check_circle</mat-icon>
+      <span>Xác nhận</span>
+    </button>
+  
+    <button mat-stroked-button color="warn" mat-dialog-close>
+      <mat-icon>cancel</mat-icon>
+      <span>Thoát</span>
+    </button>
+  </mat-dialog-actions>
+  
