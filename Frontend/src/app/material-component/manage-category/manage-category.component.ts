@@ -8,6 +8,8 @@ import { CategoryService } from 'src/app/services/category.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 import { CategoryComponent } from '../dialog/category/category.component';
+import { ConfirmationComponent } from '../dialog/confirmation/confirmation.component';
+import { ProductService } from 'src/app/services/product.service';
 
 
 @Component({
@@ -26,15 +28,16 @@ export class ManageCategoryComponent implements OnInit {
     private ngxService:NgxUiLoaderService,
     private snackbarService:SnackbarService,
     private router:Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private productService:ProductService
   ) { }
 
   ngOnInit(): void {
     this.ngxService.start();
-    this.tabledata();
+    this.tableData();
   }
 
-  tabledata(){
+  tableData(){
     this.categoryService.getCategories().subscribe((response:any)=>{
       this.ngxService.stop();
       this.dataSource = new MatTableDataSource(response);
@@ -67,7 +70,7 @@ export class ManageCategoryComponent implements OnInit {
 
     });
     const sub = dialogRef.componentInstance.onAddCategory.subscribe((response)=>{
-      this.tabledata();
+      this.tableData();
     })
   }
 
@@ -84,7 +87,64 @@ export class ManageCategoryComponent implements OnInit {
 
     });
     const sub = dialogRef.componentInstance.onAddCategory.subscribe((response)=>{
-      this.tabledata();
+      this.tableData();
+    })
+  }
+
+  handleDelete(values:any){
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      message:"delete"+values.name+'product',
+      confirmation:true
+    }
+    const dialogRef = this.dialog.open(ConfirmationComponent,dialogConfig);
+    const sub = dialogRef.componentInstance.onEmitStatusChange.subscribe((reponse:any)=>{
+      this.ngxService.start();
+      this.deleteProduct(values.id);
+      dialogRef.close();
+    })
+  }
+
+  deleteProduct(id:any){
+    this.productService.delete(id).subscribe((reponse:any)=>{
+      this.ngxService.stop();
+      this.tableData();
+      this.reponseMessage = reponse?.message;
+      this.snackbarService.openSnackBar(this.reponseMessage,"success");
+
+    },(error:any)=>{
+      this.ngxService.stop();
+      console.log(error);
+      if(error.error?.message){
+        this.reponseMessage = error.error?.message;
+      }else{
+        this.reponseMessage = GlobalConstants.genericError;
+      }
+      this.snackbarService.openSnackBar(this.reponseMessage,GlobalConstants.error);
+    })
+  }
+
+  onChange(status:any,id:any){
+    this.ngxService.start();
+    var data = {
+      status:status.toString(),
+      id:id
+    }
+
+    this.productService.updateStatus(data).subscribe((reponse:any)=>{
+      this.ngxService.stop();
+      this.reponseMessage = reponse?.message;
+      this.snackbarService.openSnackBar(this.reponseMessage,"success");
+       
+    },(error:any)=>{
+      this.ngxService.stop();
+      console.log(error);
+      if(error.error?.message){
+        this.reponseMessage = error.error?.message;
+      }else{
+        this.reponseMessage = GlobalConstants.genericError;
+      }
+      this.snackbarService.openSnackBar(this.reponseMessage,GlobalConstants.error);
     })
   }
 
