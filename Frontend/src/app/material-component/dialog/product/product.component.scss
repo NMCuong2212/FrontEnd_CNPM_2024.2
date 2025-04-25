@@ -1,8 +1,9 @@
 mat-toolbar {
     background-color: #1976d2;  // Màu nền của thanh công cụ
     color: white;
-    padding: 10px 20px;
+    padding: 10px 10px;
     border-radius: 8px; // Thêm bo góc cho thanh công cụ
+    margin-bottom: auto;
   }
   
   mat-toolbar-row {
@@ -63,7 +64,7 @@ mat-toolbar {
   }
   
   button {
-    border: radius 10px;
+    border-radius: 5px;
     font-weight: bold;
   }
   
