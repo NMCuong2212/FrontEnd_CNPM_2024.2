@@ -5,6 +5,7 @@ import { RouteGuardService } from '../services/route-guard.service';
 import { ManageProductComponent } from './manage-product/manage-product.component';
 import { ManageOrderComponent } from './manage-order/manage-order.component';
 import { ManageShopComponent } from './manage-shop/manage-shop.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
 
 
 export const MaterialRoutes: Routes = [
@@ -42,7 +43,16 @@ export const MaterialRoutes: Routes = [
         data:{
             expectelRole:['admin','user']
         }
-    }
+    },
+
+    {
+        path: 'user',
+        component: ManageUserComponent,
+        canActivate: [RouteGuardService],
+        data: {
+            expectedRole: ['admin']
+        }
+    },
     
     
 

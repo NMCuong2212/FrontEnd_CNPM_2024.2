@@ -21,6 +21,7 @@ import { ManageOrderComponent } from './manage-order/manage-order.component';
 import { ManageShopComponent } from './manage-shop/manage-shop.component';
 import { ShopComponent } from './dialog/shop/shop.component';
 import { ViewBillComponent } from './dialog/view-bill/view-bill.component';
+import { ManageUserComponent } from './manage-user/manage-user.component';
 
 @NgModule({
   imports: [
@@ -45,7 +46,8 @@ import { ViewBillComponent } from './dialog/view-bill/view-bill.component';
     ManageOrderComponent,
     ViewBillComponent,
     ManageShopComponent,
-    ShopComponent
+    ShopComponent,
+    ManageUserComponent
   ]
 })
 export class MaterialComponentsModule {}
