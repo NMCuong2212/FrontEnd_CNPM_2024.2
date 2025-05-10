@@ -40,9 +40,10 @@ export class ViewBillComponent implements OnInit {
 
    tableData(){
     this.shopService.getShopBills(this.shopId).subscribe((reponse:any)=>{
+      console.log('Bill response:', reponse);
       this.ngxService.stop();;
       this.total = reponse.totalAmount;
-      this.dataSource = new MatTableDataSource(reponse.bill);
+      this.dataSource = new MatTableDataSource(reponse.bills);
     }, (error: any)=>{
       this.ngxService.stop();
       console.log(error);

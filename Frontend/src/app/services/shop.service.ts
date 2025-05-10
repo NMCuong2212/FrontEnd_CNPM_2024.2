@@ -13,7 +13,7 @@ export class ShopService {
   add(data: any){
     return this.httpClient.post(this.url +
       '/shop/addShop',data, {
-        headers: new HttpHeaders().set('Contens-Type','application/json') 
+        headers: new HttpHeaders().set('Content-Type','application/json') 
       }
     );
   }
@@ -21,12 +21,12 @@ export class ShopService {
   update(data:any){
     return this.httpClient.post(this.url+
       '/shop/updateShop/'+data.id,data,{
-        headers: new HttpHeaders().set('Contents-Type','application/json')
+        headers: new HttpHeaders().set('Content-Type','application/json')
       }
     );
   }
   getShops(){
-    return this.httpClient.get(this.url+'shop/getShop');
+    return this.httpClient.get(this.url+'/shop/getShop');
   }
 
   getShopBills(id: any) {

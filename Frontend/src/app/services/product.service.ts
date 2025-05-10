@@ -13,7 +13,7 @@ export class ProductService {
 
   add(data:any){
     return this.httpClient.post(this.url +
-      "product/add",data,{
+      "/product/add",data,{
         headers:new HttpHeaders().set('Content-Type',"application/json")
       }
     )
@@ -43,17 +43,17 @@ export class ProductService {
 
   delete(id:any){
     return this.httpClient.post(this.url +
-      "/product/delete/"+id,{
+      "/product/delete/"+id,{},{
         headers: new HttpHeaders().set('Content-Type',"application/json")
       }
     )
   }
 
   getProductsByCategory(id:any){
-    return this.httpClient.get(this.url+"/product/getByCategory"+id);
+    return this.httpClient.get(this.url+"/product/getByCategory/"+id);
   }
 
   getById(id:any){
-    return this.httpClient.get(this.url+"/product/getById"+id)
+    return this.httpClient.get(this.url+"/product/getById/"+id)
   }
 }
