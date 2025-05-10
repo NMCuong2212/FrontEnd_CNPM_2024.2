@@ -1,0 +1,68 @@
+:host {
+    display: block;
+    padding: 16px;
+  }
+  
+  mat-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    margin-bottom: 12px;
+  
+    span {
+      font-size: 20px;
+    }
+  
+    button {
+      font-weight: 500;
+      mat-icon {
+        margin-right: 4px;
+      }
+    }
+  }
+  
+  mat-form-field {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 0 8px 0;
+  }
+  
+  hr {
+    margin: 8px 0;
+    border: none;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .responsive_table {
+    overflow-x: auto;
+  
+    table {
+      width: 100%;
+      min-width: 400px;
+      border-radius: 8px;
+      overflow: hidden;
+  
+      th, td {
+        text-align: left;
+        padding: 12px 16px;
+      }
+  
+      th {
+        background-color: #f5f5f5;
+        font-weight: bold;
+      }
+  
+      .action-link {
+        text-align: center;
+  
+        button {
+          transition: background-color 0.2s;
+          &:hover {
+            background-color: rgba(25, 118, 210, 0.1);
+          }
+        }
+      }
+    }
+  }
+  
